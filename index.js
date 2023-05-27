@@ -17,13 +17,7 @@ app.use(cors(headers))
 
 app.use(express.json())
 
-app.get('/',(req, res)=>{
-    res.json({
-        ok: true
-    })
-})
-
-//app.use('/api/auth', require('./routes/auth'))
+app.use('/api/auth', require('./routes/auth'))
 
 app.listen(process.env.PORT, ()=>{
     console.log('Escuchando en el puerto', process.env.PORT)
