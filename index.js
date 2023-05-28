@@ -18,6 +18,7 @@ app.use(cors(headers))
 app.use(express.json())
 
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/chat', require('./routes/message'))
 
 app.listen(process.env.PORT, ()=>{
     console.log('Escuchando en el puerto', process.env.PORT)
