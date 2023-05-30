@@ -4,14 +4,22 @@ const Usuario = require('../models/Usuario.js')
 const { generarJWT } = require('../helpers/jwt.js')
 
 const crearUsuario = async(req, res) => {
-    const {name, email, password } = req.body
+    const {name,nickname, email, password } = req.body
 
     try{
-        let usuario = await Usuario.findOne({email: email})
+        var usuario = await Usuario.findOne({email: email})
         if (usuario){
-            res.status(400).json({
+            return res.status(400).json({
                 ok: false,
-                msg: "Este correo ya existe"
+                msg: "Este correo ya está en uso"
+            })
+        }
+
+        var usuario = await Usuario.findOne({nickname: nickname})
+        if (usuario){
+            return res.status(400).json({
+                ok: false,
+                msg: "Este nickname ya está en uso"
             })
         }
         usuario = new Usuario(req.body)
@@ -32,14 +40,6 @@ const crearUsuario = async(req, res) => {
     }
 }
 
-const registrarUsuario = (req, res) => {
-    const {name, email, password, age} = req.body
-
-    res.json({
-        ok:true,
-        name, email, password, age
-    })
-}
 
 const loginUsuario = async(req, res) => {
     const {email, password} = req.body
@@ -88,7 +88,6 @@ const revalidarToken = async(req, res) => {
 
 module.exports = {
     loginUsuario,
-    registrarUsuario,
     crearUsuario,
     revalidarToken
 }
