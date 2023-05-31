@@ -12,7 +12,7 @@ router.post(
     check('name', 'El nombre es obligatorio').not().isEmpty(),
     check('nickname', 'El nickname es obligatorio').not().isEmpty(),
     check( 'email', 'El email es  obligatorio').isEmail(),
-    check('password',).isLength({min: 6}),
+    check('password','Contraseña debe tener minimo 6 carácteres').isLength({min: 6}),
     validarCampos
     ],
  crearUsuario)

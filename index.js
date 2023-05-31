@@ -23,6 +23,7 @@ app.use(express.json())
 //Routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/chat', require('./routes/message'))
+app.use('/api', require('./routes/usuarios'))
 
 app.listen(process.env.PORT, ()=>{
     console.log('Escuchando en el puerto', process.env.PORT)

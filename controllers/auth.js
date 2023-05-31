@@ -48,7 +48,7 @@ const loginUsuario = async(req, res) => {
         if (!usuario) {
             return res.status(400).json({
                 ok: false,
-                msg: "El usuario no existe"
+                msg: "No existe cuenta vinculada a este correo"
             })
         }
 
@@ -56,7 +56,7 @@ const loginUsuario = async(req, res) => {
         if (!passwordValid){
             return res.status(400).json({
                 ok: false,
-                msg: "la contraseña no es correcta"
+                msg: "la contraseña es incorrecta"
             })
         }
 
