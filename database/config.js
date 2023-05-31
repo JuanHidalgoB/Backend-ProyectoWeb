@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const dbConnection = async () => {
     try{
-        mongoose.connect(process.env.DB_CONNECTION, {
+        mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true }, {
             autoIndex: true
         }).then(() => {console.log('DB online')})
         
